@@ -1,7 +1,5 @@
 <?php include('header.php');?>
-<?php
-include ("functions/functions.php");
-?>
+<?php include ("functions/functions.php");?>
     <!-- Start Category & Features Section -->
     <section id="products-category-features" style="margin-top: 50px;">
         <div class="container">
@@ -73,7 +71,7 @@ include ("functions/functions.php");
                                                                 <p>$product_title</p>
                                                                 <p>$product_desc</p>
                                                                 <a href='index.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
-                                                                <a href='index.php' class='pull-right btn btn-default add-to-cart'><i class='fa fa-backward'></i>Go Back</a>
+                                                                <a href='all_products.php' class='pull-right btn btn-default add-to-cart'><i class='fa fa-backward'></i>Go Back</a>
                                                             </div>
                                                         </div>
                                                     </div>

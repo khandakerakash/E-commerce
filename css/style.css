@@ -675,6 +675,7 @@ h2.title {
     border:1px solid #F7F7F5;
     overflow: hidden;
     margin-bottom:30px;
+    min-height: 300px;
 }
 
 .single-products {
@@ -710,6 +711,7 @@ h2.title {
 
 .product-info img{
     width: 100%;
+    height: 150px;
 }
 
 .product-info{
@@ -745,6 +747,7 @@ h2.title {
     background: #FE980F;
     color: #FFFFFF;
 }
+
 
 /* ********** 	End Category & Features Section  ********* */
 /* ******************************************************* */

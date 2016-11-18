@@ -77,7 +77,7 @@
 							<div class="shop-menu pull-left">
 								<ul class="nav navbar-nav">
 									<li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-									<li><a href="#"><i class="fa fa-product-hunt"></i> Products</a></li>
+									<li><a href="all_products.php"><i class="fa fa-product-hunt"></i> All Products</a></li>
 									<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 									<li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
@@ -91,9 +91,9 @@
 						</div>
 						<div class="col-sm-2">
 							<div class="search pull-right">
-								<form method="get" action="results.php" enctype="multipart/form-data">
-									<input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" />
-									<button type="submit" class="btn btn-primary btn-sm">Search</button>
+								<form method="get" action="search_result.php" enctype="multipart/form-data">
+									<input type="text" name="user_query" class="form-control input-sm" maxlength="64" placeholder="Search">
+									<button type="submit" name="search" value="Search" class="btn btn-primary btn-sm">Search</button>
 								</form>
 							</div>
 						</div>
