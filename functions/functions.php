@@ -1,17 +1,13 @@
+<?php include("includes/db.php"); ?>
 <?php
-    // Database establishing
-    $con = mysqli_connect("localhost", "root", "", "ecommerce_db");
-
     // Getting the categories for categoy menu
     function getCategories(){
 
         global $con;
 
-        $get_cats = "SELECT * FROM categories";
+        $results = $con->query("SELECT * FROM categories");
 
-        $run_cats = mysqli_query($con, $get_cats);
-
-        while ($row_cats = mysqli_fetch_array($run_cats)){
+        while ($row_cats = mysqli_fetch_array($results)){
 
             $cat_id = $row_cats['cat_id'];
             $cat_title = $row_cats['cat_title'];
@@ -33,11 +29,9 @@
 
             global $con;
 
-            $get_cat_products = "SELECT * FROM products WHERE product_cat='$get_cat_products_id'";
+            $results = $con->query("SELECT * FROM products WHERE product_cat='$get_cat_products_id'");
 
-            $run_get_cat_products = mysqli_query($con, $get_cat_products);
-
-            $count_get_cat_products = mysqli_num_rows($run_get_cat_products);
+            $count_get_cat_products = mysqli_num_rows($results);
 
             if ($count_get_cat_products == 0){
 
@@ -45,7 +39,7 @@
 
             }else{
 
-                while ($row_cat_products = mysqli_fetch_array($run_get_cat_products)){
+                while ($row_cat_products = mysqli_fetch_array($results)){
 
                     $product_id = $row_cat_products['product_id'];
                     $product_title = $row_cat_products['product_title'];
@@ -62,7 +56,7 @@
                                         <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                         <h2>$ $product_price</h2>
                                         <p>$product_title</p>
-                                        <a href='index.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                        <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                         <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                     </div>
                                 </div>
@@ -80,11 +74,9 @@
 
         global $con;
 
-        $get_brands = "SELECT * FROM brands";
+        $results = $con->query("SELECT * FROM brands");
 
-        $run_brands = mysqli_query($con, $get_brands);
-
-        while ($row_brands = mysqli_fetch_array($run_brands)){
+        while ($row_brands = mysqli_fetch_array($results)){
 
             $brand_id = $row_brands['brand_id'];
             $brand_title = $row_brands['brand_title'];
@@ -99,17 +91,12 @@
         if (isset($_GET['brand_id'])){
 
             $get_brand_product_id = $_GET['brand_id'];
-           // echo $get_brand_product_id;
-
 
             global $con;
 
-          //  $get_brand_products = "SELECT * FROM products WHRER product_brand=".$get_brand_product_id;
-            $get_brand_products = "SELECT * FROM products WHERE product_brand=".$get_brand_product_id;
+            $results = $con->query("SELECT * FROM products WHERE product_brand='$get_brand_product_id'");
 
-            $run_products = mysqli_query($con, $get_brand_products);
-           // var_dump($run_products);
-            $count_brand_products = mysqli_num_rows($run_products);
+            $count_brand_products = mysqli_num_rows($results);
 
             if ($count_brand_products == 0){
 
@@ -117,7 +104,7 @@
 
             }else{
 
-                while ($row_brand_products = mysqli_fetch_array($run_products)){
+                while ($row_brand_products = mysqli_fetch_array($results)){
 
                     $product_id = $row_brand_products['product_id'];
                     $product_title = $row_brand_products['product_title'];
@@ -135,7 +122,7 @@
                                             <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                             <h2>$ $product_price</h2>
                                             <p>$product_title</p>
-                                            <a href='index.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                            <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                             <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                         </div>
                                     </div>
@@ -155,11 +142,9 @@
 
                 global $con;
 
-                $get_product = "SELECT * FROM products ORDER BY RAND() LIMIT 0, 6";
+                $results = $con->query("SELECT * FROM products ORDER BY RAND() LIMIT 0, 6");
 
-                $run_product = mysqli_query($con, $get_product);
-
-                while ($row_product = mysqli_fetch_array($run_product)){
+                while ($row_product = mysqli_fetch_array($results)){
 
                     $product_id = $row_product['product_id'];
                     $product_title = $row_product['product_title'];
@@ -177,7 +162,7 @@
                                         <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                         <h2>$ $product_price</h2>
                                         <p>$product_title</p>
-                                        <a href='index.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                        <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                         <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                     </div>
                                 </div>
@@ -196,11 +181,9 @@
 
             global $con;
 
-            $get_cats = "SELECT * FROM categories";
+            $results = $con->query("SELECT * FROM categories");
 
-            $run_cats = mysqli_query($con, $get_cats);
-
-            while ($row_cats = mysqli_fetch_array($run_cats)){
+            while ($row_cats = mysqli_fetch_array($results)){
 
                 $cat_id = $row_cats['cat_id'];
                 $cat_title = $row_cats['cat_title'];
@@ -222,11 +205,9 @@
 
                 global $con;
 
-                $get_cat_products = "SELECT * FROM products WHERE product_cat='$get_cat_products_id'";
+                $results = $con->query("SELECT * FROM products WHERE product_cat='$get_cat_products_id'");
 
-                $run_get_cat_products = mysqli_query($con, $get_cat_products);
-
-                $count_get_cat_products = mysqli_num_rows($run_get_cat_products);
+                $count_get_cat_products = mysqli_num_rows($results);
 
                 if ($count_get_cat_products == 0){
 
@@ -234,7 +215,7 @@
 
                 }else{
 
-                    while ($row_cat_products = mysqli_fetch_array($run_get_cat_products)){
+                    while ($row_cat_products = mysqli_fetch_array($results)){
 
                         $product_id = $row_cat_products['product_id'];
                         $product_title = $row_cat_products['product_title'];
@@ -251,7 +232,7 @@
                                                 <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                                 <h2>$ $product_price</h2>
                                                 <p>$product_title</p>
-                                                <a href='all_products.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                                <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                                 <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                             </div>
                                         </div>
@@ -268,11 +249,9 @@
 
             global $con;
 
-            $get_brands = "SELECT * FROM brands";
+            $results = $con->query("SELECT * FROM brands");
 
-            $run_brands = mysqli_query($con, $get_brands);
-
-            while ($row_brands = mysqli_fetch_array($run_brands)){
+            while ($row_brands = mysqli_fetch_array($results)){
 
                 $brand_id = $row_brands['brand_id'];
                 $brand_title = $row_brands['brand_title'];
@@ -292,12 +271,9 @@
 
                 global $con;
 
-                //  $get_brand_products = "SELECT * FROM products WHRER product_brand=".$get_brand_product_id;
-                $get_brand_products = "SELECT * FROM products WHERE product_brand=".$get_brand_product_id;
+                $results = $con->query("SELECT * FROM products WHERE product_brand=".$get_brand_product_id);
 
-                $run_products = mysqli_query($con, $get_brand_products);
-                // var_dump($run_products);
-                $count_brand_products = mysqli_num_rows($run_products);
+                $count_brand_products = mysqli_num_rows($results);
 
                 if ($count_brand_products == 0){
 
@@ -305,7 +281,7 @@
 
                 }else{
 
-                    while ($row_brand_products = mysqli_fetch_array($run_products)){
+                    while ($row_brand_products = mysqli_fetch_array($results)){
 
                         $product_id = $row_brand_products['product_id'];
                         $product_title = $row_brand_products['product_title'];
@@ -323,7 +299,7 @@
                                                     <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                                     <h2>$ $product_price</h2>
                                                     <p>$product_title</p>
-                                                    <a href='all_products.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                                    <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                                     <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                                 </div>
                                             </div>
@@ -343,11 +319,9 @@
 
                     global $con;
 
-                    $get_product = "SELECT * FROM products";
+                    $results = $con->query("SELECT * FROM products");
 
-                    $run_product = mysqli_query($con, $get_product);
-
-                    while ($row_product = mysqli_fetch_array($run_product)){
+                    while ($row_product = mysqli_fetch_array($results)){
 
                         $product_id = $row_product['product_id'];
                         $product_title = $row_product['product_title'];
@@ -365,7 +339,7 @@
                                                 <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                                 <h2>$ $product_price</h2>
                                                 <p>$product_title</p>
-                                                <a href='all_products.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                                <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                                 <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                             </div>
                                         </div>
@@ -387,11 +361,9 @@
 
                     global $con;
 
-                    $get_product = "SELECT * FROM products WHERE product_keywords LIKE '%$search_query%'";
+                    $results = $con->query("SELECT * FROM products WHERE product_keywords LIKE '%$search_query%'");
 
-                    $run_product = mysqli_query($con, $get_product);
-
-                    while ($row_product = mysqli_fetch_array($run_product)){
+                    while ($row_product = mysqli_fetch_array($results)){
 
                         $product_id = $row_product['product_id'];
                         $product_title = $row_product['product_title'];
@@ -409,7 +381,7 @@
                                                         <img class='img-responsive' src='admin_area/product_images/$product_image' alt=''>
                                                         <h2>$ $product_price</h2>
                                                         <p>$product_title</p>
-                                                        <a href='all_products.php?pro_id=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+                                                        <a href='add_to_cart.php?add_cart=$product_id' class='pull-left btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
                                                         <a href='product_details.php?pro_id=$product_id' class='pull-right btn btn-default add-to-cart'><i class='fa fa-info-circle'></i>Details</a>
                                                     </div>
                                                 </div>
@@ -419,5 +391,49 @@
                     }
             }
         }
+
+    // For Add To Cart Functionality: add_to_cart.php
+
+    // getting the user IP address
+    function getIp() {
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        return $ip;
+    }
+
+    //creating the shopping cart
+    function getCartProduct(){
+
+        if (isset($_GET['add_cart'])){
+
+            global $con;
+
+            $ip = getIp();
+
+            $add_cart_pro_id = $_GET['add_cart'];
+
+            $results = $con->query( "SELECT * FROM add_to_cart WHERE ip_address='$ip' AND pro_id='$add_cart_pro_id'");
+
+            if ($results->num_rows>0){
+
+                echo "";
+
+            }else{
+
+                $results = $con->query("INSERT INTO add_to_cart 
+                (pro_id, ip_address) VALUES  ('$add_cart_pro_id', '$ip')");
+
+                echo $results;
+
+                echo "Your cart is ready"; // this only testing perpous
+            }
+        }
+    }
 ?>
 
