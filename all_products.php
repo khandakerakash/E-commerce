@@ -43,6 +43,15 @@
                         <?php getAllProductsFor(); ?>
                         <?php getCatProFor(); ?>
                         <?php getBrandWiseProFor(); ?>
+                        <!-- Pagination -->
+                        <ul class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li class="active"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul>
+                        <!-- Pagination -->
                     </div><!--features_items-->
                 </div>
                 <!-- Fetures Area -->

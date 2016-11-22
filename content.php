@@ -40,9 +40,16 @@
 					<div class="col-sm-9 padding-right">
 						<div class="features_items"><!--features_items-->
 							<h2 class="title text-center">Features Items</h2>
-							<?php
-								getProducts();
-							?>
+							<?php getProducts(); ?>
+                            <!-- Pagination -->
+                            <ul class="pagination">
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+                            <!-- Pagination -->
 						</div><!--features_items-->
 					</div>
 					<!-- Fetures Area -->

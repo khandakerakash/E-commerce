@@ -97,6 +97,10 @@
                             <div class="form-group">
                                 <label>Product Image</label>
                                 <input type="file"  name="product_image" class="filestyle file-input">
+                                <!--<label class="custom-file">
+                                    <input type="file" name="product_image" id="file" class="custom-file-input">
+                                    <span class="custom-file-control"></span>
+                                </label>-->
                             </div>
                             <div class="form-group">
                                 <label>Product Price</label>
