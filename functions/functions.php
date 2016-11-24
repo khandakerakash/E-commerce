@@ -14,7 +14,7 @@
 
             echo "<div class=\"panel panel-default\">
 				    <div class=\"panel-heading\">
-					    <h4 class=\"panel-title\"><a href='index.php?cat_id=$cat_id'><i class=\"fa fa-apple\"></i> $cat_title</a></h4>
+					    <h4 class=\"panel-title\"><a class='myCategory' data-cat='$cat_id' href='index.php?cat_id=$cat_id'><i class=\"fa fa-apple\"></i> $cat_title</a></h4>
 					</div>
 				  </div>";
         }
@@ -81,7 +81,7 @@
             $brand_id = $row_brands['brand_id'];
             $brand_title = $row_brands['brand_title'];
 
-            echo "<li><a href='index.php?brand_id=$brand_id'>$brand_title</a></li>";
+            echo "<li><a class='myCategory' data-id='$brand_id' href='index.php?brand_id=$brand_id'>$brand_title</a></li>";
         }
     }
 

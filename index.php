@@ -248,9 +248,11 @@
 					<div class="col-sm-9 padding-right">
 						<div class="features_items"><!--features_items-->
 							<h2 class="title text-center">Features Items</h2>
+                            <div id="showingProduct">
 							<?php getAllProducts(); ?>
 							<?php getCategoriesProduct(); ?>
 							<?php getBrandWiseProducts(); ?>
+                            </div>
                             <!-- Pagination -->
                             <ul class="pagination">
                                 <li><a href="#">1</a></li>
@@ -437,6 +439,9 @@
 		<script src="js/price-range.js"></script>
 		<script src="js/modernizr.js"></script>
 		<script src="js/scorl-up-script.js"></script>
-		<script src="js/myScript.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.plugins.min.js"></script>
+
+        <script src="js/myScript.js"></script>
 	</body>
 </html>
