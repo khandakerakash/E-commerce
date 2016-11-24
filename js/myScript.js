@@ -20,7 +20,8 @@ var RGBChange = function() {
 
 $(document).ready(function () {
 
-    $('.mmm').Lazy();
+    //$('.mmm').Lazy();
+
     $(".myCategory").on('click',function (e) {
         e.preventDefault();
         var cat_id = $(this).data('cat');
